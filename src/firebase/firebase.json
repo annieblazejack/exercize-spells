@@ -1,4 +1,3 @@
-    //emulators require  you to install Java, they have a Java runtime environment
 {
     "hosting": {
       "public": "dist",
