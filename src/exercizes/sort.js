@@ -1,0 +1,1 @@
+//function that returns exercizes sorted by starting body position
