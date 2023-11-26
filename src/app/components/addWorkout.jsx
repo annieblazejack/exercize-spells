@@ -3,7 +3,7 @@ import addData from "@/firebase/firestore/addData";
 
 import { useState } from "react";
 
-export default function AddData() {
+export default function AddWorkout() {
 
 const [ name, setName ] = useState("");
 const [ house, setHouse ] = useState("");

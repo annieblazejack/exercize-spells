@@ -1,20 +1,22 @@
 'use client'
-import getDocuments from "@/firebase/firestore/getCollection";
 import { useState, useEffect } from "react";
 import subscribeToCollection from "@/firebase/firestore/subscribeToCollection";
 
-export default function GetData() {
+export default function GetData( { collectionName }) {
 
     const [docs, setDocs] = useState([]);
 
-    const handleForm = async () => {
-      const result = await getDocuments('users');
-      setDocs(result);
-    };
-    
-    // useEffect(() => {handleForm()}, []);
-
-    useEffect(() => {subscribeToCollection('users', (snapshot) => {setDocs(snapshot)})}, []);
+    //subscribes to users collection, sets state whenever collection changes 
+    useEffect(() => {
+        subscribeToCollection(collectionName, (snapshot) => {
+            setDocs(snapshot.map(x => {
+                return {
+                    id: x.id,
+                    ... x.data()
+                }
+            }))
+        });
+    }, []);
 
     return (
         <div>
@@ -24,7 +26,7 @@ export default function GetData() {
                     console.log(doc);
                     return(
                         <li key={doc.id}>
-                            {doc.data().name} of house {doc.data().house}
+                            {JSON.stringify(doc)}
                         </li>
                     )
                 })}
