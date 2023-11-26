@@ -1,6 +1,7 @@
 'use client';
 import addData from '@/firebase/firestore/addData';
 import { useState } from 'react';
+import Button from './button';
 
 const positions = ['standing', 'sitting', 'lying on belly'];
 
@@ -66,13 +67,12 @@ export default function AddExercise() {
           </option>
         ))}
       </select>
-      <button
+      <Button
         disabled={!fieldsAreValid}
         onClick={handleForm}
-        className={`${fieldsAreValid ? 'bg-blue-900' : 'bg-blue-200'}`}
       >
         Add Exercise!
-      </button>
+      </Button>
     </div>
   );
 }
