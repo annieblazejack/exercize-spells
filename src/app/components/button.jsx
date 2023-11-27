@@ -13,8 +13,10 @@ export default function Button(props) {
   return (
     <button
       {...restProps}
-      className={`p-1 px-2 m-1 bg-slate-100 rounded-sm  ${
-        restProps.disabled === true ? 'text-slate-400' : 'text-black'
+      className={`p-1 px-2 m-1 bg-slate-100 rounded-sm ${
+        restProps.disabled === true
+          ? 'text-slate-400 cursor-default'
+          : 'text-black cursor-pointer'
       } ${restProps.className ?? ''}`}
     >
       {children}

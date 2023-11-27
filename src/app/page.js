@@ -5,16 +5,28 @@ import AddWorkout from './components/addWorkout';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-around">
-    <h1>Add Workout</h1>
-    <AddWorkout />
-    <GetData collectionName={'workouts'} />
-    <h1>Add Alphabet</h1>
-    <AddAlphabet />
-    <GetData collectionName={'alphabets'} />
-    <h1>Add Exercise</h1>
-    <AddExercise />
-    <GetData collectionName={'exercises'} />
+    <main className="w-full m-12">
+      <Section sectionName="Add Workout">
+        <AddWorkout />
+        <GetData collectionName={'workouts'} />
+      </Section>
+      <Section sectionName="Add Alphabet">
+        <AddAlphabet />
+        <GetData collectionName={'alphabets'} />
+      </Section>
+      <Section sectionName="Add Exercise">
+        <AddExercise />
+        <GetData collectionName={'exercises'} />
+      </Section>
     </main>
-  )
+  );
+}
+
+function Section({ sectionName, children }) {
+  return (
+    <div className="my-8">
+      <h1 className="text-lg">{sectionName}</h1>
+      {children}
+    </div>
+  );
 }
