@@ -8,22 +8,22 @@ import Button from './button';
 const db = getFirebase().firestore;
 
 export default function GetData({ collectionName }) {
-  const [docs, setDocs] = useState([]);
+    const [docs, setDocs] = useState([]);
 
-  //subscribes to users collection, sets state whenever collection changes
-  useEffect(() => {
-    subscribeToCollection(collectionName, (snapshot) => {
-      setDocs(
-        snapshot.map((x) => {
-          return {
-            id: x.id,
-            ...x.data(),
-          };
-        })
-      );
-    });
-  }, []);
-
+    //subscribes to users collection, sets state whenever collection changes
+    useEffect(() => {
+      subscribeToCollection(collectionName, (snapshot) => {
+        setDocs(
+          snapshot.map((x) => {
+            return {
+              id: x.id,
+              ...x.data(),
+            };
+          })
+        );
+      });
+    }, []);
+  
   return (
     <div>
       <ul>
